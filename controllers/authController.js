@@ -6,6 +6,7 @@ const authConfig = require('../config/auth')
 const router = express.Router();
 
 
+
 router.post('/register', async(req,res)=>{
     const {email} = req.body;
     try {
@@ -25,7 +26,7 @@ router.post('/register', async(req,res)=>{
 
 router.post('/authenticate', async (req,res)=> {
     const {email,password} = req.body;
-   
+   console.log('re body ', req.body)
     const user = await User.findOne({email}).select('+password');
     console.log('/authenticate ', {email,password}, 'user', user)
     if(!user){
